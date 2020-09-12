@@ -189,10 +189,6 @@ public class Tootle.Dialogs.Compose : Window {
 
 	[GtkCallback]
 	void on_select_media () {
-		var filter = new Gtk.FileFilter ();
-		foreach (string mime in API.Attachment.SUPPORTED_MIMES)
-			filter.add_mime_type (mime);
-
 		var chooser = new Gtk.FileChooserNative (
 			 _("Select media"),
 			 this,
@@ -200,6 +196,11 @@ public class Tootle.Dialogs.Compose : Window {
 			 _("_Open"),
 			 _("_Cancel")
 		);
+
+		var filter = new Gtk.FileFilter ();
+		foreach (string mime in API.Attachment.SUPPORTED_MIMES)
+			filter.add_mime_type (mime);
+
 		chooser.select_multiple = true;
 		chooser.set_filter (filter);
 
