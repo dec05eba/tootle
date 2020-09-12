@@ -243,7 +243,7 @@ public class Tootle.Dialogs.ListEditor: Gtk.Window {
 			message ("Creating list...");
 			var req = new Request.POST ("/api/v1/lists")
 				.with_account (accounts.active)
-				.with_param ("title", name_entry.text);
+				.with_form_data ("title", name_entry.text);
 			yield req.await ();
 
 			message ("Received new List entity");
@@ -254,7 +254,7 @@ public class Tootle.Dialogs.ListEditor: Gtk.Window {
 			message ("Updating list title...");
 			yield new Request.PUT (@"/api/v1/lists/$(list.id)")
 				.with_account (accounts.active)
-				.with_param ("title", name_entry.text)
+				.with_form_data ("title", name_entry.text)
 				.await ();
 		}
 

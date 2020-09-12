@@ -47,7 +47,7 @@ public class Tootle.API.Relationship : Entity {
 			});
 
 		if (param != null)
-			req.with_param (param, val);
+			req.with_form_data (param, val);
 
 		req.exec ();
 	}

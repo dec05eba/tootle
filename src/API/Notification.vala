@@ -22,7 +22,7 @@ public class Tootle.API.Notification : Entity, Widgetizable {
 
 		var req = new Request.POST ("/api/v1/notifications/dismiss")
 		    .with_account (accounts.active)
-			.with_param ("id", id)
+			.with_form_data ("id", id)
 			.exec ();
         return req;
     }
